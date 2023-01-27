@@ -1,10 +1,10 @@
-from crawler.crawler import Crawler
+from crawler import Crawler
 import schedule
 
 
 def main():
     crawler = Crawler()
-    crawler.run()
+    crawler.run(mod='dev')
 
 
 if __name__ == '__main__':

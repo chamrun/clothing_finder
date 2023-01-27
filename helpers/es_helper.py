@@ -1,6 +1,6 @@
 from random import choice
-from elasticsearch import Elasticsearch
 # pip install elasticsearch==7.13.0
+from elasticsearch import Elasticsearch
 
 from helpers.config_reader import read_config
 
