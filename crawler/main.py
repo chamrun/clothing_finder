@@ -1,10 +1,15 @@
+import time
+
 from crawler import Crawler
 import schedule
 
 
 def main():
     crawler = Crawler()
-    crawler.run(mod='dev')
+    schedule.every(1).day.do(crawler.run)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 if __name__ == '__main__':
