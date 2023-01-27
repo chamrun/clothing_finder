@@ -1,11 +1,10 @@
 from flask import Flask, request
 from flask_cors import CORS
-
-from helpers.es_helper import get_es_connection
+from elasticsearch import Elasticsearch
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'application/json'
-es = get_es_connection()
+es = Elasticsearch(['http://localhost:9200'])
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 
