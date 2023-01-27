@@ -1,8 +1,7 @@
-from random import choice
 # pip install elasticsearch==7.13.0
 from elasticsearch import Elasticsearch
 
-from helpers.config_reader import read_config
+from crawler.helpers.config_reader import read_config
 
 
 def get_es_connection():
