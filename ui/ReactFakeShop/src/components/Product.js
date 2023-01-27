@@ -107,7 +107,7 @@ function Product() {
                                             <i className="fa fa-star text-warning"></i>
 
                                             <div className="price d-flex flex-row align-items-center">
-                                                <big className="display-6"><b>${product.price}</b></big>
+                                                <big className="display-6"><b>R {product.price}</b></big>
                                             </div>
                                         </div>
                                         <p className="text-muted">{product.description}</p>
