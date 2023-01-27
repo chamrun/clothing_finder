@@ -12,7 +12,7 @@ function Products() {
         let componentMounted = true;
         const getProdcuts = async () => {
             setLoading(true);
-            const response = await fetch('https://fakestoreapi.com/products');
+            const response = await fetch('http://localhost:5000/products');
             if (componentMounted) {
                 const data = await response.json();
                 setData(data);
