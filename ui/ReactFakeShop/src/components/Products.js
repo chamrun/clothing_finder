@@ -107,11 +107,11 @@ function Products() {
                                         <div style={{ marginTop: "auto" }}>
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <div className="m-3"><b>${product.price}</b></div>
-                                                <NavLink className="stretched-link" to={`/product/${product.id}`}>
-                                                    <button className="btn btn-sm m-3 border-primary">
-                                                        <i className="fa fa-arrow-right text-muted"></i>
-                                                    </button>
-                                                </NavLink>
+                                                {/*<NavLink className="stretched-link" to={`/product/${product.id}`}>*/}
+                                                {/*    <button className="btn btn-sm m-3 border-primary">*/}
+                                                {/*        <i className="fa fa-arrow-right text-muted"></i>*/}
+                                                {/*    </button>*/}
+                                                {/*</NavLink>*/}
                                             </div>
                                         </div>
                                     </div>
