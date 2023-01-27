@@ -1,0 +1,52 @@
+{
+  "banimode-product": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "analysis": {
+        "analyzer": {
+          "rebuilt_persian": {
+            "tokenizer": "standard",
+            "filter": [
+              "lowercase",
+              "decimal_digit",
+              "persian_normalization"
+            ]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "product": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "price": {
+            "type": "float"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "object",
+            "properties": {
+              "rate": {
+                "type": "float"
+              },
+              "count": {
+                "type": "long"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
