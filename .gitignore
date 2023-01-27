@@ -1,3 +1,4 @@
 .idea
 *.pyc
 crawler/tmp_response.py
+*.tar
