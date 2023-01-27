@@ -1,7 +1,7 @@
 # pip install elasticsearch==7.13.0
 from elasticsearch import Elasticsearch
-
-from crawler.helpers.config_reader import read_config
+import json
+import os
 
 
 def get_es_connection():
@@ -13,7 +13,6 @@ def get_es_connection():
 
 
 def create_index(index_name):
-
     es = get_es_connection()
     mapping = read_config('es_setting.json', key=index_name)
 
@@ -23,3 +22,20 @@ def create_index(index_name):
     )
 
     return res
+
+
+def read_config(file_name, key=None, config_path=None):
+    if config_path is None:
+        config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'config')
+    config_file = os.path.join(config_path, file_name)
+
+    with open(config_file, 'r') as f:
+        config = json.load(f)
+
+    if key is None:
+        return config
+
+    if key not in config:
+        raise Exception(f'Key {key} not found in config file {file_name}')
+
+    return config[key]
