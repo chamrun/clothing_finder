@@ -1,4 +1,4 @@
-![screenshot](/screencapture.jpg)
+![screenshot](/screencapture.png)
 
 First, install elasticsearch:
 
