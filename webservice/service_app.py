@@ -1,9 +1,12 @@
 from flask import Flask, request
+from flask_cors import CORS
 
 from helpers.es_helper import get_es_connection
 
 app = Flask(__name__)
+app.config['CORS_HEADERS'] = 'application/json'
 es = get_es_connection()
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 def create_query(raw_query):
