@@ -35,6 +35,7 @@ def products():
 
     raw_result = es.search(
         index="banimode-product",
+        size=40,
         # body={"query": query}
     )
 

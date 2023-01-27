@@ -1,4 +1,4 @@
-from webservice.service_app import app
+from service_app import app
 from waitress import serve
 
 
