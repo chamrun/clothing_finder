@@ -8,31 +8,43 @@ function Products() {
     const [loading, setLoading] = useState(false);
     const [filter, setFilter] = useState(data);
 
-    useEffect(() => {
-        let componentMounted = true;
-        const getProdcuts = async () => {
-            setLoading(true);
-            const response = await fetch('http://localhost:5000/products');
-            if (componentMounted) {
-                const data = await response.json();
-                setData(data);
-                setFilter(data);
-                setLoading(false);
-            }
-            return () => {
-                componentMounted = false;
-            }
+  function apiCall (params={}) {
+    let componentMounted = true
+    const getProdcuts = async () => {
+      setLoading(true)
+      let url = 'http://localhost:5000/products'
+      if (params) {
+        url += '?'
+        for (const [key, value] of Object.entries(params)) {
+          url += `${key}=${value}&`
         }
-        getProdcuts();
-    }, []);
+      }
+
+      const response = await fetch(url)
+      if (componentMounted) {
+        const data = await response.json()
+        setData(data)
+        setFilter(data)
+        setLoading(false)
+      }
+      return () => {
+        componentMounted = false
+      }
+    }
+    getProdcuts()
+  }
+
+  useEffect(() => {
+    apiCall()
+  }, []);
 
     let categories = (
       <div className="position-sticky" style={{ top: "100px" }}>
-        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => setFilter(data)}>All</button>
-        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => filterProduct("1")}>Women's Clothing</button>
-        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => filterProduct("3")}>Men's Clothing</button>
-        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => filterProduct("2")}>Jewelery</button>
-        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => filterProduct("electronics")}>Electronics</button>
+        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => apiCall()}>All</button>
+        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => apiCall({ 'category': '1' })}>Women's Watch</button>
+        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => apiCall({ 'category': '2' })}>Others</button>
+        <button className="btn btn-outline-dark m-1 btn-sm" onClick={() => apiCall({ 'category': '3' })}>Men's Clothing</button>
+        {/*<button className="btn btn-outline-dark m-1 btn-sm" onClick={() => apiCall("electronics")}>Electronics</button>*/}
       </div>
     )
 
