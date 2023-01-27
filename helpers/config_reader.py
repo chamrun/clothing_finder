@@ -2,9 +2,9 @@ import json
 import os
 
 
-def read_config(file_name, config_path=None, key=None):
+def read_config(file_name, key=None, config_path=None):
     if config_path is None:
-        config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config')
+        config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'config')
     config_file = os.path.join(config_path, file_name)
 
     with open(config_file, 'r') as f:
