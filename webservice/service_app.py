@@ -30,13 +30,13 @@ def create_query(raw_query):
 
 @app.route("/products", methods=['GET'])
 def products():
-    # raw_query = request.args
-    # query = create_query(raw_query)
+    raw_query = request.args
+    query = create_query(raw_query)
 
     raw_result = es.search(
         index="banimode-product",
         size=40,
-        # body={"query": query}
+        body={"query": query}
     )
 
     response = []
